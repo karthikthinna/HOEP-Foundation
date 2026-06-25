@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply for Support — HOEP Foundation</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.apply-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 72px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.apply-sidebar h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--blue-dark);
+  margin-bottom: 16px;
+}
+
+.apply-sidebar p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--gray-mid);
+  margin-bottom: 24px;
+}
+
+.eligibility-list {
+  list-style: none;
+  margin-bottom: 28px;
+}
+
+.eligibility-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--blue-light);
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+}
+
+.eligibility-list li::before {
+  content: '✓';
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.apply-image {
+  border-radius: 14px;
+  overflow: hidden;
+  height: 260px;
+  margin-bottom: 24px;
+}
+
+.apply-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apply-contact-box {
+  background: var(--blue-dark);
+  color: white;
+  border-radius: 14px;
+  padding: 24px 22px;
+}
+
+.apply-contact-box h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.apply-contact-box p {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-bottom: 6px;
+  color: white;
+}
+
+.apply-form-wrap {
+  background: var(--white);
+  border: 1.5px solid var(--blue-light);
+  border-radius: 18px;
+  padding: 40px 36px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+}
+
+.apply-form-wrap h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--blue-dark);
+  margin-bottom: 6px;
+}
+
+.apply-form-wrap > p {
+  color: var(--gray-mid);
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+}
+
+.form-section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--orange);
+  margin: 28px 0 14px;
+  padding-top: 24px;
+  border-top: 1.5px solid var(--blue-light);
+}
+
+.form-section-title:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group { margin-bottom: 16px; }
+
+.form-group label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gray-dark);
+  margin-bottom: 6px;
+}
+
+.form-group label .req { color: var(--orange); }
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  border: 1.5px solid #d0dce8;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(42,107,156,0.12);
+}
+
+.form-group textarea { resize: vertical; min-height: 100px; }
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+  cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  accent-color: var(--blue);
+  flex-shrink: 0;
+}
+
+.form-consent {
+  background: var(--gray-light);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px 0;
+}
+
+.form-consent p {
+  font-size: 0.82rem;
+  color: var(--gray-mid);
+  line-height: 1.6;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin-top: 8px;
+}
+
+.success-message {
+  display: none;
+  background: #e6f4ea;
+  border: 1.5px solid #4caf50;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  color: #2e7d32;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .apply-layout { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .apply-form-wrap { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="logo.png" alt="HOEP Foundation">
+    </a>
+    <ul class="nav-links">
+      <li><a href="who-we-help.html">Who We Help</a></li>
+      <li><a href="apply.html" class="active">Apply for Support</a></li>
+      <li><a href="success-stories.html">Success Stories</a></li>
+      <li><a href="index.html">Your Impact</a></li>
+      <li><a href="donate.html" class="btn-donate">Donate to the Foundation</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Apply for Support</h1>
+  <p>Tell us your story. If you have the drive to build a better future, we want to help you get there.</p>
+</div>
+
+<div class="apply-layout">
+  <div class="apply-sidebar">
+    <p class="section-label">Before You Apply</p>
+    <h2>Who Qualifies for Support</h2>
+    <p>We serve motivated individuals who have a clear path to self-sufficiency but face a specific financial or systemic barrier holding them back.</p>
+    <ul class="eligibility-list">
+      <li>You are from an underserved or low-income background</li>
+      <li>You have a specific, identified need (education, training, or medical)</li>
+      <li>You have a clear plan for how support will change your situation</li>
+      <li>You are committed to self-sufficiency, not ongoing dependence</li>
+      <li>Children, single women, men, and veterans are all welcome to apply</li>
+    </ul>
+    <div class="apply-image">
+      <img src="women.jpg" alt="Woman looking towards future">
+    </div>
+    <div class="apply-contact-box">
+      <h4>Questions Before Applying?</h4>
+      <p>📧 info@anhoepfoundation.com</p>
+      <p>📞 (340) 527-7890</p>
+      <p style="margin-top:10px;opacity:0.7;font-size:0.82rem;">We review all applications personally and respond within 2–3 weeks.</p>
+    </div>
+  </div>
+
+  <div class="apply-form-wrap">
+    <h2>Share Your Need</h2>
+    <p>All applications are reviewed personally by our team. We are here to listen.</p>
+
+    <div id="applyForm">
+      <p class="form-section-title">Personal Information</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" placeholder="Your first name">
+        </div>
+        <div class="form-group">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" placeholder="Your last name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email Address <span class="req">*</span></label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="(000) 000-0000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" placeholder="Your city">
+        </div>
+        <div class="form-group">
+          <label>State / Country <span class="req">*</span></label>
+          <input type="text" placeholder="State or country">
+        </div>
+      </div>
+
+      <p class="form-section-title">About Your Situation</p>
+      <div class="form-group">
+        <label>Type of Support Needed <span class="req">*</span></label>
+        <select>
+          <option value="">Select one...</option>
+          <option>Education Funding</option>
+          <option>Vocational Training</option>
+          <option>Medical Procedure / Surgery</option>
+          <option>Micro-Loan / Small Business</option>
+          <option>Youth / Child Program</option>
+          <option>Elder Care Support</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Describe your current situation <span class="req">*</span></label>
+        <textarea placeholder="Tell us about the circumstances that have brought you to this point..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>What specific support are you requesting? <span class="req">*</span></label>
+        <textarea placeholder="Be as specific as possible — what would you like funded, and how much do you estimate it costs?"></textarea>
+      </div>
+      <div class="form-group">
+        <label>How will this support change your life?</label>
+        <textarea placeholder="Describe your plan for achieving self-sufficiency after receiving support..."></textarea>
+      </div>
+
+      <p class="form-section-title">Tell Us More</p>
+      <p style="font-size:0.85rem;color:var(--gray-mid);margin-bottom:14px;">Which of the following best describes you? (Select all that apply)</p>
+      <div class="checkbox-group">
+        <label class="checkbox-item"><input type="checkbox"> Single parent or caregiver</label>
+        <label class="checkbox-item"><input type="checkbox"> Veteran or military family</label>
+        <label class="checkbox-item"><input type="checkbox"> Currently unemployed</label>
+        <label class="checkbox-item"><input type="checkbox"> Youth (under 25)</label>
+        <label class="checkbox-item"><input type="checkbox"> Seeking medical support</label>
+        <label class="checkbox-item"><input type="checkbox"> Seeking educational / training support</label>
+      </div>
+
+      <div class="form-group">
+        <label>How did you hear about HOEP Foundation?</label>
+        <select>
+          <option value="">Select one...</option>
+          <option>Social Media</option>
+          <option>Word of Mouth / Referral</option>
+          <option>Community Organization</option>
+          <option>Internet Search</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-consent">
+        <label class="checkbox-item">
+          <input type="checkbox">
+          <p>I understand that submitting this form is the first step in a review process. HOEP Foundation will contact me to discuss my application. My story may be shared anonymously to demonstrate our impact, and I consent to this use. <span class="req">*</span></p>
+        </label>
+      </div>
+
+      <button class="btn btn-secondary btn-submit" onclick="submitForm()">Submit My Application</button>
+    </div>
+
+    <div class="success-message" id="successMsg">
+      🎉 Thank you for sharing your story! We have received your application and our team will reach out within 2–3 weeks. We believe in you.
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo.png" alt="HOEP Foundation">
+        <p>Help Others Elevate & Prosper. We invest in potential, not dependency.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Work</h4>
+        <a href="who-we-help.html">Who We Help</a>
+        <a href="success-stories.html">Success Stories</a>
+        <a href="index.html">Your Impact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Donate</h4>
+        <a href="donate.html">Give Now</a>
+        <a href="donate.html">Become a Contributor</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <a href="mailto:info@anhoepfoundation.com">info@hoepfoundation.com</a>
+        <a href="tel:3405277890">(703) 473-4642</a>
+        <a href="apply.html">Apply for Support</a>
+      </div>
+    </div>
+    <div class="footer-impact">
+      <h4>100% Impact Commitment</h4>
+      <p>Every dollar you give goes directly to the individuals we serve.</p>
+      <a href="who-we-help.html">Learn more →</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HOEP Foundation — Help Others Elevate & Prosper</span>
+      <div class="footer-social">
+        <a href="#">&#x1F426;</a>
+        <a href="#">in</a>
+        <a href="#">&#9654;</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function submitForm() {
+  document.getElementById('applyForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+  window.scrollTo({ top: document.getElementById('successMsg').offsetTop - 100, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
